@@ -11,6 +11,6 @@
 		from 											
 			computers_table (nolock) 								
 		where 											
-			computers_table.enabled = 1				-- include any other default filters here
+			computers_table.enabled = 1			
 	</query>			
 </root>
