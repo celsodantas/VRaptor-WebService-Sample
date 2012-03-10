@@ -20,7 +20,7 @@ public class ApplicationController {
 	}
 	
 	public void respondWithError() {
-		result.use( Results.status() ).badRequest("Um erro aconteceu no servidor. ");
+		result.use( Results.status() ).badRequest("Um erro aconteceu no servidor.");
 	}
 	
 	public void respondWithNotFound() {

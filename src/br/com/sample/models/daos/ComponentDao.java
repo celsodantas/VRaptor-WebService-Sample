@@ -15,9 +15,9 @@ import static br.com.sample.utils.SQLConstants.*;
 @Repository(value="component_dao")
 public class ComponentDao extends ApplicationDao implements IComponentDao {
 
-	private String appendLikeDescription = " d04.d04_008_c like ? "; 
-	private String appendUkey 			 = " d04.ukey = ? ";
-	private String computerUkey			 = " d49.ukey = ? ";
+	private String appendLikeName 	= " components_table.name like ? "; 
+	private String appendId 		= " components_table.ukey = ? ";
+	private String computerId		= " computers_table.ukey = ? ";
 	
 	private QueryReader getQueryReader() 	 	 {  return new QueryReader("components"); }
 	private String getBaseQuery()				 {  return getQueryReader().getQuery("base_query"); }
@@ -33,21 +33,21 @@ public class ComponentDao extends ApplicationDao implements IComponentDao {
 	@Override
 	@Cacheable(value = "component_dao")
 	public List<Component> searchByName(String name, Integer page, Integer per) throws Exception {
-		String sql = getBaseQuery() + and + appendLikeDescription;
+		String sql = getBaseQuery() + and + appendLikeName;
 		return executeAndGetComponents(sql, page, per, "%"+name+"%");
 	}
 	
 	@Override
 	@Cacheable(value = "component_dao")
 	public Component get(String ukey) throws Exception {
-		String sql = getBaseQuery() + and + appendUkey;
+		String sql = getBaseQuery() + and + appendId;
 		
 		return executeAndGetComponent(sql, ukey);
 	}
 
 	/**
 	 * List dos componentes de um determinado computador (template de máquina)
-	 * @param computerUkey
+	 * @param computerId
 	 * A UKEY do template
 	 * @return
 	 * List de componentes
@@ -57,7 +57,7 @@ public class ComponentDao extends ApplicationDao implements IComponentDao {
 	@Override
 	@Cacheable(value = "component_dao")
 	public List<Component> getComputerComponents(String compUkey) throws Exception {
-		String sql = getComputerComponentsQuery() + and + computerUkey;
+		String sql = getComputerComponentsQuery() + and + computerId;
 		
 		return executeAndGetComponents(sql, null, null, compUkey);
 	}
@@ -65,7 +65,7 @@ public class ComponentDao extends ApplicationDao implements IComponentDao {
 	@Override
 	@Cacheable(value = "component_dao")
 	public Component getComputerComponent(String compUkey, String componentUkey) throws Exception {
-		String sql = getComputerComponentsQuery() + and + computerUkey + and + appendUkey;
+		String sql = getComputerComponentsQuery() + and + computerId + and + appendId;
 		
 		return executeAndGetComponent(sql, compUkey, componentUkey);
 	}

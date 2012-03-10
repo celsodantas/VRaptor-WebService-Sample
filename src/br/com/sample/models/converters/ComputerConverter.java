@@ -12,8 +12,8 @@ public class ComputerConverter extends ApplicationConverter<Computer> {
 		MapExtractor ex = new MapExtractor(entity);
 
 		// Fetching from entity
-		String id			= ex.getString	("id");
-		String name 		= ex.getString	("name");
+		String id		= ex.getString	("id");
+		String name 	= ex.getString	("name");
 
 		// Pushing into DTO
 		element.setId	(id);

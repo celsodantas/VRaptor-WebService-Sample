@@ -18,9 +18,9 @@ public class ComponentConverter extends ApplicationConverter<Component> {
 		Double price 		=	ex.getDouble("price");
 		
 		// Pushing into DTO
-		component.setId			(id);
-		component.setName			(name);
-		component.setPrice			(price);
+		component.setId		(id);
+		component.setName	(name);
+		component.setPrice	(price);
 
 		return component;
 	}
