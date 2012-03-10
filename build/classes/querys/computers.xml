@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [ <!ATTLIST query id ID #IMPLIED > ]>
+ 
+<root>
+	<query id="base_query">
+		select 	
+			ROW_NUMBER() OVER(order by computers_table.table_key) as _row_num,			
+										
+			computers_table.table_key 	as id,					
+			computers_table.name 		as name
+		from 											
+			computers_table (nolock) 								
+		where 											
+			computers_table.enabled = 1				-- include any other default filters here
+	</query>			
+</root>

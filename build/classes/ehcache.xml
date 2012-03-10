@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <diskStore path="java.io.tmpdir"/>
+    <defaultCache
+        maxElementsInMemory="10000"
+        eternal="false"
+        timeToIdleSeconds="20"
+        timeToLiveSeconds="20"
+        overflowToDisk="true"
+        diskPersistent="false"
+        diskExpiryThreadIntervalSeconds="120" 
+        memoryStoreEvictionPolicy="LFU"/>
+    
+    <cache name="computer_dao"		 maxElementsInMemory="300"/>
+    <cache name="component_dao"		 maxElementsInMemory="300"/>
+    
+    <cache name="SimplePageCachingFilter"
+       maxElementsInMemory="10000"
+       maxElementsOnDisk="1000"
+       eternal="false"
+       overflowToDisk="true"
+       timeToIdleSeconds="20"
+       timeToLiveSeconds="20"
+       memoryStoreEvictionPolicy="LFU"
+        />
+
+</ehcache>

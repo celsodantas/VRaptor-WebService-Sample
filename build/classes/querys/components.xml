@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [ <!ATTLIST query id ID #IMPLIED > ]>
+
+<root>
+	 <query id="base_query">
+		select																			
+			ROW_NUMBER() OVER(order by components_table.table_key) as _row_num,	
+									
+			components_table.table_key 	as 		id,		 										
+			components_table.name_01 	as 		name,																			
+			components_table.preco 		as 		price 												
+		from																			
+			components_table (nolock)									
+		where 																			
+			components_table.enabled = 1 and components_table.preco > 0			
+	</query>
+	<query id="computer_components_query">
+		select																			
+			ROW_NUMBER() OVER(order by components_table.table_key) as _row_num,	
+									
+			components_table.table_key 	as 		id,		 										
+			components_table.name_01 	as 		name,
+			components_table.preco 		as 		price 												
+		from																			
+			components_table (nolock)	
+			join computers_table (nolock) 														
+				on computers_table.components_key = components_table.table_key								
+		where 																			
+			components_table.enabled = 1 and components_table.preco > 0	
+	</query>
+</root>
