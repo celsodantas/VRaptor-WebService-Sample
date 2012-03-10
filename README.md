@@ -12,6 +12,8 @@ It's using:
 
 I build this application to be a WebService to fetch informations from a old (very old!) database. Table names were weird and had some crazy joins. So the easiest way was to use pure SQL to fetch stuff, and not use Hibernate. You'll see the SQLs inside a XML file.
 
-I'll organize the `test/` folder and I'll push to Github as well.
+It's using EhCache because data doesn't get updated very often, and my app was only fetching data and not adding anything. If it's not your case, remove it.
+
+I'll organize the `test/` folder and I'll push to Github later.
 
 
